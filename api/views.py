@@ -20,11 +20,13 @@ def get_article_list(request):
             Article.objects.filter(num=num).delete()
 
     if request.method == 'GET':
+        skip = int(request.GET.get('skip'))
+
         existed_article_nums = [arg[0] for arg in Article.objects.values_list('num')]
 
         crawler = Crawler(existed_article_nums)
 
-        articles, article_nums, not_new = crawler.get_articles()
+        articles, article_nums, not_new = crawler.get_articles(skip)
 
         if not_new:
             delete_old_articles(existed_article_nums, article_nums)
