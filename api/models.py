@@ -26,6 +26,6 @@ class Article(models.Model):
     publisher = models.CharField(max_length=64, null=True, blank=True)
 
     # 添付ファイル名
-    attach_name = models.CharField(max_length=128, null=True, blank=True)
+    attach_name = models.CharField(max_length=1024, null=True, blank=True)
     # 添付ファイルURL
     attach_url = models.URLField(null=True, blank=True)
