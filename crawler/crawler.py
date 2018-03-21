@@ -108,4 +108,4 @@ class Crawler:
 
                 articles['articles'].append(article_dict)
 
-            skip += 20
+            skip += 1000
