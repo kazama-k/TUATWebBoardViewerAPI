@@ -15,17 +15,17 @@ class Article(models.Model):
     important = models.IntegerField()
 
     # 記事タイトル
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=4096)
     # 記事カテゴリ
-    category = models.CharField(max_length=64, null=True, blank=True)
+    category = models.CharField(max_length=4096, null=True, blank=True)
     # 担当者
-    administrator = models.CharField(max_length=64, null=True, blank=True)
+    administrator = models.CharField(max_length=4096, null=True, blank=True)
     # 本文
     body = models.CharField(max_length=4096)
     # 発信元
-    publisher = models.CharField(max_length=64, null=True, blank=True)
+    publisher = models.CharField(max_length=4096, null=True, blank=True)
 
     # 添付ファイル名
-    attach_name = models.CharField(max_length=1024, null=True, blank=True)
+    attach_name = models.CharField(max_length=4096, null=True, blank=True)
     # 添付ファイルURL
     attach_url = models.URLField(null=True, blank=True)
