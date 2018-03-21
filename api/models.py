@@ -3,7 +3,13 @@ from django.db import models
 
 class Article(models.Model):
 
-    ALL = 0
+    UNIMPORTANT = 0
+    IMPORTANT = 1
+
+    ALL = 100
+
+    # 重要記事か
+    important = models.IntegerField()
 
     # 記事タイトル
     title = models.CharField(max_length=256)
