@@ -36,7 +36,7 @@ class Crawler:
             'publisher': None
         }
 
-    def get_articles(self, max_skip):
+    def get_articles(self):
         skip = 0
         articles = {'articles': []}
         article_nums = []
@@ -50,9 +50,6 @@ class Crawler:
                 return articles, article_nums, True
 
             for article in raw_articles:
-                if skip >= max_skip:
-                    return articles, article_nums, False
-
                 article_num = int(article.get('alt'))
 
                 # 既にある記事番号よりも小さかったら見なくても良い
