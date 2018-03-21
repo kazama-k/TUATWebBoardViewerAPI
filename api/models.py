@@ -8,6 +8,9 @@ class Article(models.Model):
 
     ALL = 100
 
+    # 記事番号
+    num = models.IntegerField()
+
     # 重要記事か
     important = models.IntegerField()
 
