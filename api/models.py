@@ -28,4 +28,4 @@ class Article(models.Model):
     # 添付ファイル名
     attach_name = models.CharField(max_length=4096, null=True, blank=True)
     # 添付ファイルURL
-    attach_url = models.URLField(null=True, blank=True)
+    attach_url = models.URLField(max_length=4096, null=True, blank=True)
