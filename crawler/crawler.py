@@ -22,6 +22,18 @@ class Crawler:
             return False
         return True
 
+    def get_attach_urls(self, inf):
+        urls = []
+        for raw_url in inf.find_all('td')[1].find_all('a'):
+            urls.append(raw_url.get('href'))
+        return urls
+
+    def get_attach_names(self, inf):
+        names = []
+        for raw_name in inf.find_all('td')[1].find_all('a'):
+            names.append(raw_name.string.strip())
+        return names
+
     @staticmethod
     def init_article_dict():
         return {
@@ -97,8 +109,9 @@ class Crawler:
                     elif label == '本文':
                         article_dict['body'] = inf.find('td', class_='emphasis2').text
                     elif label == '添付ファイル':
-                        article_dict['attach_name'] = inf.find_all('td')[1].text.strip()
-                        article_dict['attach_url'] = inf.find_all('td')[1].find('a').get('href')
+                        # article_dict['attach_name'] = inf.find_all('td')[1].text.strip()
+                        article_dict['attach_name'] = self.get_attach_names(inf)
+                        article_dict['attach_url'] = self.get_attach_urls(inf)
                     # elif label[0:2] == '対象':
                     #     article_dict['target'] = inf.find_all('td')[1].find('span').text
                     elif label == '発信元':
